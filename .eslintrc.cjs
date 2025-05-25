@@ -7,6 +7,10 @@
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
+  env: {
+    browser: true,
+    es2021: true,
+  },
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -14,17 +18,20 @@ module.exports = {
       jsx: true,
     },
   },
-  env: {
-    browser: true,
-    commonjs: true,
-    es6: true,
-  },
   ignorePatterns: ["!**/.server", "!**/.client"],
-
-  // Base config
-  extends: ["eslint:recommended"],
-
+  extends: ["eslint:recommended", "plugin:react/recommended"],
+  plugins: ["react", "import"],
+  rules: {
+    "import/no-named-as-default": "off",
+    "semi": ["error", "always"],
+  },
   overrides: [
+    {
+      files: ["**/*.{ts,tsx,js,jsx}"],
+      rules: {
+        "import/no-named-as-default": "off",
+      },
+    },
     // React
     {
       files: ["**/*.{js,jsx,ts,tsx}"],
@@ -35,6 +42,9 @@ module.exports = {
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
       ],
+      rules: {
+        "import/no-named-as-default": "off",
+      },
       settings: {
         react: {
           version: "detect",
@@ -56,7 +66,7 @@ module.exports = {
       plugins: ["@typescript-eslint", "import"],
       parser: "@typescript-eslint/parser",
       settings: {
-        "import/internal-regex": "^~/",
+        "import/internal-regex": "^@/",
         "import/resolver": {
           node: {
             extensions: [".ts", ".tsx"],
@@ -71,9 +81,11 @@ module.exports = {
         "plugin:import/recommended",
         "plugin:import/typescript",
       ],
+      rules: {
+        "import/no-named-as-default": "off",
+      },
     },
 
-    // Node
     {
       files: [".eslintrc.cjs"],
       env: {

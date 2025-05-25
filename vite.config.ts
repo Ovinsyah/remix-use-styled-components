@@ -9,6 +9,16 @@ declare module "@remix-run/node" {
 }
 
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
+  },
+  ssr: {
+    noExternal: ["styled-components"],
+  },
   plugins: [
     remix({
       future: {
