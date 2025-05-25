@@ -21,7 +21,6 @@ This project demonstrates a complete integration of Styled Components with serve
 - ⚡ **Streaming Compatible**: Works with Remix's streaming
 - 🛡️ **No FOUC**: Eliminates flash of unstyled content
 - 🔍 **TypeScript Ready**: Includes type definitions
-- 🎨 **Ant Design Compatible**: Works alongside Ant Design
 
 ## Installation
 
